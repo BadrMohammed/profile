@@ -45,7 +45,9 @@ const addOrEditUser = (
         updateData(res.data.data, !form?.id ? 0 : 1);
         setStatus({
           status: "success",
-          message: res.data.message,
+          message: !form?.id
+            ? "User has been successfully created"
+            : res.data.message,
         });
       }
       setLoading(false);
