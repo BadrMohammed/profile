@@ -36,13 +36,15 @@ export const CreateOrUpdateView: React.FC<ICreateOrUpdate> = ({
 }) => {
   const [openTerms, setOpenTerms] = useState<boolean>(false);
 
-  useEffect(() => {
-    return () => {
-      if (userForm?.id) {
-        setUserForm(null);
-      }
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     if (userForm?.id) {
+  //       setUserForm(null);
+  //     }
+  //   };
+  // }, []);
+
+  console.log(userForm);
   return (
     <div>
       <Model
@@ -148,7 +150,7 @@ export const CreateOrUpdateView: React.FC<ICreateOrUpdate> = ({
                 </Grid>
               );
             })}
-            {!userForm?.id ? (
+            {!userForm ? (
               <Grid xs={12} marginTop="1rem" item={true}>
                 <Controller
                   name="terms"
