@@ -17,17 +17,21 @@ export const ListView = ({
   return (
     <React.Fragment>
       <Loader open={loading} />
-      <CustomTable
-        columns={columns}
-        data={data}
-        handleUpdate={handleUpdate}
-        handleDelete={handleDelete}
-        pagination={pagination}
-        fatchData={fatchData}
-        setLoading={setLoading}
-        setData={setData}
-        setPagination={setPagination}
-      />
+      {data?.length ? (
+        <CustomTable
+          columns={columns}
+          data={data}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+          pagination={pagination}
+          fatchData={fatchData}
+          setLoading={setLoading}
+          setData={setData}
+          setPagination={setPagination}
+        />
+      ) : (
+        <h2 className="center">No data avaliable</h2>
+      )}
     </React.Fragment>
   );
 };
