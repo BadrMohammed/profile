@@ -10,9 +10,8 @@ export const User = () => {
     if (item) {
       let newData = [...data];
       if (type === 0) {
-        newData.unshift(item);
-
-        setData((prevState: any) => [...prevState, newData]);
+        newData.push(item);
+        setData(newData);
       } else {
         setData((prevState: any) =>
           type === 1

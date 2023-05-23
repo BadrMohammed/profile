@@ -42,7 +42,7 @@ export const ListController = ({ data, setData, updateData }: any) => {
     let item: any = data.find((d: any) => d.id === id);
 
     function onDelete() {
-      deleteUser(item.id, setStatus, setOpenToast, updateData);
+      deleteUser(item.id, setStatus, setOpenToast, updateData, setLoading);
     }
 
     confirm(onDelete);

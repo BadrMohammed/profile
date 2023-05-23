@@ -39,7 +39,7 @@ const addOrEditUser = (
   Request(url, form)
     .then((res) => {
       if (res.status === 200 && res.data.data) {
-        if (form?.id) {
+        if (!form?.id) {
           reset();
         }
         updateData(res.data.data, !form?.id ? 0 : 1);
@@ -71,8 +71,10 @@ const deleteUser = (
   id: any,
   setStatus: Function,
   setOpen: Function,
-  updateData: Function
+  updateData: Function,
+  setLoading: Function
 ) => {
+  setLoading(true);
   httpService
     .delete(`user/delete/${id}`)
     .then((res) => {
@@ -84,9 +86,11 @@ const deleteUser = (
         });
       }
       setOpen(true);
+      setLoading(false);
     })
     .catch(({ response }: any) => {
       setOpen(true);
+      setLoading(false);
       setStatus({
         type: "error",
         message: response?.data?.message,
